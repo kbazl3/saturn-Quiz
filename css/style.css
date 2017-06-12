@@ -3,6 +3,7 @@
 body {
     background-color: #fff;
     padding: 20px;
+    background-image: url('http://wallpapercave.com/wp/j8eMFrM.jpg');
 }
 #myQuiz {
     font-family: 'Roboto', sans-serif;
@@ -15,6 +16,7 @@ body {
     color: white;
     background: ;
     background: #000 url(../images/background.jpg) no-repeat 0px 0px;
+    margin: auto;
 }
 #myQuiz h1 {
     font-weight: 100;

@@ -6,7 +6,7 @@ angular.module('saturnQuiz')
         $scope.activeQuestionAnswer = 0;
         $scope.percentage = 0;
 
-        $http.get('./quiz_data.json').then(function(quizData) {
+        $http.get('../quiz_data.json').then(function(quizData) {
             $scope.myQuestions = quizData.data;
             $scope.totalQuestions = $scope.myQuestions.length;
         });
@@ -50,8 +50,6 @@ angular.module('saturnQuiz')
             var twitterLink = '<a class="btn twitter" target="_blank" href="http://twitter.com/share?text=I scored a ' + percentage + '%25 on this quiz about Saturn. Try to beat my score at&url=' + url + '&hashtags=SaturnQuiz">Tweet your score</a>';
 
             var emailLink = '<a class="btn email" href="mailto:?subject=Try to beat my saturn quiz score!&body=I scored a ' + percentage + '% on this quiz about Saturn. Try to beat my score at ' + url + '">Email a friend</a>';
-
-
 
             var newMarkup = emailLink + twitterLink;
 
