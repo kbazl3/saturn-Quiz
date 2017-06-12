@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="saturnQuiz">
+
+<head>
+    <meta charset="utf-8">
+    <title>Angular Quiz</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body ng-controller="mainCtrl">
+
+    <div id="myQuiz">
+        <h1>Test Your Knowledge: <span>Saturn</span></h1>
+        <div class="progress">
+            <div class="
+
+            {{ ($index === activeQuestion) ? 'on' : 'off' }}
+            {{ (question.questionState === 'answered') ? 'answered' : 'unanswered' }}
+            {{ (question.correctness === 'correct') ? 'correct' : 'incorrect' }}
+            "
+            ng-repeat="question in myQuestions"></div>
+        </div>
+
+        <div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active' }}">
+            <h2>Welcome</h2>
+            <p>Click begin to test your knowledge of Saturn</p>
+            <p class="btn" ng-click="activeQuestion=0">Begin</p>
+        </div>
+
+        <div ng-repeat="question in myQuestions" class="question
+        {{ ($index === activeQuestion) ? 'active' : 'inactive'}}
+        {{ (question.questionState === 'answered') ? 'answered' : 'unanswered'}}">
+
+            <p class="txt">{{question.question}}</p>
+
+
+            <p class="ans"
+
+
+
+             ng-click="selectAnswer($parent.$index, $index)"
+
+             ng-class="{
+                 image: possibleAnswer.image,
+                 selected: isSelected($parent.$index, $index),
+                 correct: isCorrect($parent.$index, $index)
+             }"
+
+            ng-style="{ 'background-image': 'url({{possibleAnswer.image}})'}"
+             ng-repeat="possibleAnswer in myQuestions[$index].answers">
+                {{possibleAnswer.text}}
+            </p>
+
+            <div class="feedback">
+                <p ng-show="question.correctness === 'correct'">You are <strong>Correct</strong></p>
+                <p ng-show="question.correctness === 'incorrect'">Oops! That is not correct</p>
+                <p>{{question.feedback}}</p>
+                <div ng-click="selectContinue()" class="btn">Continue</div>
+            </div>
+        </div>
+
+
+
+        <div class="results {{(totalQuestions === activeQuestion) ? 'active' : 'inactive'}}">
+            <h3>Results</h3>
+            <p>You scored {{percentage}}% by correctly answering {{score}} of the total {{totalQuestions}} questions</p>
+            <p>User the links below to challenge your friends!</p>
+            <div class="share" ng-bind-html="createSharedLinks(percentage)">
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="/js/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <script src="/js/mainCtrl.js" charset="utf-8"></script>
+</body>
+
+</html>
